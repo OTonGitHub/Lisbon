@@ -1,6 +1,6 @@
 {
   "model": "logistic regression",
-  "threshold": 0.51,
+  "threshold": 0.5,
   "num_features": [
     "LeadTime",
     "StaysInWeekendNights",
