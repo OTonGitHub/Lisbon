@@ -1,54 +1,57 @@
-How to run this project anywhere.
-I use VSCode with the Jupyter extension (ms-toolsai.jupyter) &
-the Python extension (ms-python.python).
+# Binary Classification Model on Hotel Cancellation Probability
 
-Open the terminal in your working directory.
-Clone this repo into your working directory using `git clone https://codeberg.org/daraknet/Lisbon.git .`
+Data cleaning and predictive modelling on Lisbon hotel booking records,
+predicting whether a reservation will be cancelled before arrival.
 
-Python version is pinned in `.python-version` (3.12.14 for this project).
-Most tool managers recognize this idiomatic version file.
+I use VS Code with the Python (`ms-python.python`), Python Environments
+(`ms-python.vscode-python-envs`), and Jupyter (`ms-toolsai.jupyter`)
+extensions. The Python Environments extension activates `.venv`
+in the integrated terminal on its own, so there is nothing to source.
 
-I use mise.jdx to manage binaries. Note that recent mise versions
-don't read `.python-version` unless you opt in once:
+## Setup
 
-    mise settings add idiomatic_version_file_enable_tools python
-    mise install
+Clone into your empty working directory:
 
-Or install 3.12.14 however you prefer — pyenv, asdf, or python.org.
+    git clone https://codeberg.org/daraknet/Lisbon.git .
 
-Then create and activate the virtual environment:
+Python is pinned to **3.12.14** in `.python-version` and `mise.toml`.
+
+### With mise (what I use)
+
+    mise trust
+    mise install      # installs Python 3.12.14
+    mise run install  # creates and activates .venv & installs dependencies
+
+If `mise run install` fails, install the dependencies directly:
+
+    python -m pip install --no-cache-dir -U -r requirements.txt --prefer-binary
+
+### With uv (recommended)
+
+uv is becoming the standard for Python project management. It installs
+the interpreter, creates the venv, and installs packages in one step.
+See https://docs.astral.sh/uv/
+
+    uv sync
+
+### Without either
+
+Install Python 3.12.14 however you prefer — pyenv, asdf, or python.org.
 
     python3 -m venv .venv
-    source .venv/bin/activate
-
-VS Code should prompt to use this environment for the workspace — accept it.
-
-Install dependencies:
-
     python -m pip install -r requirements.txt
 
-Alternatively, if you use uv (https://docs.astral.sh/uv/), `uv sync`
-handles the interpreter, venv, and packages in one step using the
-included pyproject.toml.
+## VS Code
 
-Python binary is version controlling using a .python-version file.
-Most tool management systems recognize idiomatic version files such as this.
+Open the folder and select `./.venv/bin/python` as the interpreter
+(Command Palette → *Python: Select Interpreter*). It normally prompts
+on its own.
 
-I use mise.jdx for managing all my binaries so I will simply run `mise install`
-OR, you can simply install the version pinned in the `.python-version` file (3.12.14 for this Project).
+Outside VS Code, activate manually: `source .venv/bin/activate`
+(`.venv\Scripts\Activate.ps1` on Windows).
 
-I recommend using uv (from https://docs.astral.sh/uv/) to manage python binaries and packages, it syncs
-everythign including the kernel for VSCode to use. But I don't need a fancy tool. It's up to you how you want to set it up, but I will include a "pyproject.toml" file if you want to use UV.
+## Dependencies
 
-Point is, use this binary to activate the virtual envronment using the correct binary,
-VSCode will automatically
-
-Now make sure your shell is using the correct python version by running `python --version`
-
-Then run, `python -m venv .venv` to create your virtual environment for this Project using the correct Python version.
-
-The Python VSCode should automatically detect this environment prompt to use this envrionment for the workspace press yes.
-
-Now before getting started, Install all the requirements using the following command
-
-> `python -m pip install --no-cache-dir -U -r requirements.txt --prefer-binary`
+`requirements.txt` and `pyproject.toml` cover the bootstrap only —
+enough to open and run the notebook. Additional libraries are installed
+from within `lisbon.ipynb` as the analysis proceeds.

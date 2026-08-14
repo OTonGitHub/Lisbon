@@ -7,5 +7,4 @@ _.python.venv = { path = ".venv", create = true }
 
 [tasks.install]
 description = "Install dependencies"
-alias = "i"
 run = "python -m pip install --no-cache-dir -U -r requirements.txt --prefer-binary"
