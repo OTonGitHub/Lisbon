@@ -1,0 +1,37 @@
+{
+  "model": "logistic regression",
+  "threshold": 0.51,
+  "num_features": [
+    "LeadTime",
+    "StaysInWeekendNights",
+    "StaysInWeekNights",
+    "Adults",
+    "Children",
+    "Babies",
+    "ADR",
+    "RequiredCarParkingSpaces",
+    "TotalOfSpecialRequests",
+    "age",
+    "n_card_declined",
+    "has_agent",
+    "has_company",
+    "prior_bookings",
+    "prior_cancellations",
+    "prior_cancel_rate"
+  ],
+  "cat_features": [
+    "hotel",
+    "Meal",
+    "Country",
+    "MarketSegment",
+    "DistributionChannel",
+    "ReservedRoomType",
+    "DepositType",
+    "CustomerType",
+    "arrival_month"
+  ],
+  "trained_on": "arrivals 2015-07-01 to 2017-08-31",
+  "test_roc_auc": 0.9021,
+  "sklearn_version": "1.9.0",
+  "random_state": 42
+}

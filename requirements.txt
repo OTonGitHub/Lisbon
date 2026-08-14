@@ -26,3 +26,12 @@ tornado==6.5.8
 traitlets==5.16.1
 typing_extensions==4.16.0
 wcwidth==0.8.2
+# analysis stack (also installed by the first cell of lisbon.ipynb)
+pandas==3.0.5
+numpy==2.5.2
+matplotlib==3.11.1
+scikit-learn==1.9.0
+joblib==1.5.3
+# headless execution / report rendering
+nbclient==0.11.0
+nbconvert==7.17.1
